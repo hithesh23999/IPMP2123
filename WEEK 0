@@ -1,0 +1,261 @@
+1)DIAGONAL DIFFERENCE
+int diagonalDifference(int r, int c, int** a) {
+    int sum1=0,sum2=0;
+    for(int i=0;i<r;i++)
+{for(int j=0;j<c;j++){
+    if(i==j)
+    { sum1+=a[i][j];
+    }
+if(i+j==r-1)
+{sum2+=a[i][j];}
+}}
+return abs(sum1-sum2);}
+
+
+2)PLUS MINUS
+void plusMinus(int n, int* a) {
+    float count=0,count1=0,count2=0;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]>0)
+        count++;
+        else if(a[i]<0)
+        count1++;
+        else {
+            count2++;
+        
+        }}
+        printf("%.6f \n %.6f \n %.6f \n",count/n,count1/n,count2/n);
+        
+    }
+
+
+
+3)MIN MAX SUM
+void miniMaxSum(int n, int* a) {
+    int temp;n=5; 
+   
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+        if(a[j]>a[j+1]){
+            temp=a[j];
+            a[j]=a[j+1];
+            a[j+1]=temp;
+            
+                }}}
+            long int minimal_sum = 0, max_sum = 0;
+    for(int i = 0; i<n-1;i++ )
+    {
+        minimal_sum += a[i];
+    }
+
+    for(int j = 1; j<n;j++ )
+    {
+         max_sum += a[j];
+    }
+
+    printf("%ld %ld",minimal_sum,max_sum);
+
+
+}
+4)BIRTHDAY CANDLES
+int birthdayCakeCandles(int ar_count, int* ar) {
+    int  max = ar[0], count = 0;
+    for(int i=0;i<ar_count;i++)
+    {
+        if(ar[i] > max)
+            {
+                max  = ar[i];
+            }
+    }
+
+
+    for(int i=0;i<ar_count;i++)
+    {
+        if(ar[i] == max)
+        count++;
+    }
+
+    return count;
+}
+
+5)TIME CONVERSIONS
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+   char t[10];
+   scanf("%s", t);
+
+   if(t[8] == 'P') {
+     if(t[0] != '1' || t[1] != '2') {
+       t[0]++;
+       t[1]+=2;
+     }
+   } else {
+     if(t[0] == '1' && t[1] == '2') {
+       t[0] = '0';
+       t[1] = '0';
+     }
+   }
+   t[8] = '\0';
+   printf("%s\n", t);
+    
+   return 0;
+}
+
+6)BREAKING THE RECORDS
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+int main(){
+    int n; 
+    scanf("%d",&n);
+    int min;
+    int countmin = 0;
+    int max;
+    int countmax = 0;
+    int *score = malloc(sizeof(int) * n);
+    for(int score_i = 0; score_i < n; score_i++){
+       scanf("%d",&score[score_i]);
+    }
+    min = max = score[0];
+    for (int i = 1; i < n; i++){
+        if (score[i] > max){
+            countmax++;
+            max = score[i];
+        }
+        if (score[i] < min){
+            countmin++;
+            min = score[i];
+        }
+    }
+    printf("%d %d", countmax, countmin);
+      return 0;
+      }
+      
+      7)GRADING STUDENTS
+      #include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+int main(){
+    int n; 
+    scanf("%d",&n);
+    for(int a0 = 0; a0 < n; a0++){
+        int grade; 
+        scanf("%d",&grade);
+        if (grade < 38) {
+            fprintf(stdout, "%d\n", grade); // Unchanged
+        }
+        else if (5 - (grade % 5) < 3) {
+            fprintf(stdout, "%d\n", 5*(grade/5 + 1));
+        }
+        else {
+            fprintf(stdout, "%d\n", grade);
+        }
+    }
+    return 0;
+}
+8) STAIR CASE
+void staircase(int n) {
+    for(int i=1;i<=n;i++)
+    {for(int j=1;j<=n;j++){
+        if(j<=n-i)
+        printf(" ");
+        else 
+        printf("#");
+        
+        
+    }
+    printf("\n");
+        
+    }
+    
+    
+    9)FORMING  A MAGICAL NUMBER
+    #include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+#include <limits.h>
+
+int main() {
+    int n = 3;
+    int a[3][3] = {4,9,2,3,5,7,8,1,6}; 
+    int b[3][3];
+    int cost = INT_MAX;
+    for(int i=0;i<3;i++) {
+        for(int j=0;j<3;j++) {
+            scanf("%i", &b[i][j]);
+        }
+    }
+    for(int k=0; k<4; k++) {
+        int diff1 = 0, diff2 = 0;
+        for(int i=0;i<n;i++) {
+            for(int j=0;j<n;j++) {
+                diff1 += abs(a[i][j]-b[i][j]);
+                diff2 += abs(a[i][n-1-j]-b[i][j]);
+            }
+        }
+        if(diff1<cost)
+            cost = diff1;
+        if(diff2<cost)
+            cost = diff2;
+        
+        for(int i=0; i<n/2; i++) {
+            for(int j=0; j<(n+1)/2; j++) {
+                int temp = b[i][j];
+                b[i][j] = b[n-1-j][i];
+                b[n-1-j][i] = b[n-1-i][n-1-j];
+                b[n-1-i][n-1-j] = b[j][n-1-i];
+                b[j][n-1-i] = temp;
+            }
+        }
+    }
+    printf("%i", cost);
+    return 0;
+}
+
+
+10)COMPARE THE TRIPLETS
+#include<stdio.h>
+void comp(int a[],int b[]){
+int sum=0,c[2],sum2=0;
+for(int i=0;i<3;i++){
+    if(a[i]>b[i])
+    {c[0]=1;
+        sum=sum+c[0];
+    }
+    else if(b[i]>a[i])
+    {
+        c[1]=1;
+        sum2=sum2+c[1];
+    }
+    
+        
+    } 
+    printf("%d %d",sum,sum2);
+    
+}
+int main()
+{
+    int a[3],b[3];
+    for(int i=0;i<3;i++){
+        scanf("%d",&a[i]);
+    }
+for(int i=0;i<3;i++){
+        scanf("%d",&b[i]);}
+        comp(a,b);
+        }
